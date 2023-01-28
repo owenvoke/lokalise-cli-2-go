@@ -1,0 +1,27 @@
+name: 'Lokalise CLI'
+description: 'Run commands using the Lokalise CLI'
+
+inputs:
+  token:
+    description: 'A Lokalise API token'
+    required: true
+  config:
+    description: 'The path to a config file'
+    required: false
+    default: 'config.yml'
+  command:
+    description: 'The command to run'
+    required: true
+    default: ''
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - '--token ${{ inputs.token }}'
+    - '--config ${{ inputs.who-to-greet }}'
+    - '${{ inputs.command }}'
+
+branding:
+  icon: 'globe'
+  color: 'green'
